@@ -1,4 +1,4 @@
-const SUBMIT_ENDPOINT = "";
+const SUBMIT_ENDPOINT = "https://script.google.com/macros/s/AKfycbyPh28q3YYuwk1GNz0vt0x0HQUwpxE3ZxmaV9TZlXYG22Y2ifGIuHcUOtnzKp4dSLFj/exec";
 
 const form = document.querySelector("#surveyForm");
 const message = document.querySelector("#formMessage");
