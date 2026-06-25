@@ -470,7 +470,7 @@ button[type="submit"]:disabled {
 
   .hero__image {
     object-fit: cover;
-    object-position: center;
+    object-position: 54% center;
   }
 
   main {
