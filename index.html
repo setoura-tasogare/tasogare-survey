@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="瀬戸浦たそがれナイトマーケット 参加者アンケート"
+    />
+    <meta name="theme-color" content="#f45d2d" />
+    <title>瀬戸浦たそがれナイトマーケット アンケート</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <img
+        class="hero__image"
+        src="./assets/hero.jpg"
+        alt="瀬戸浦たそがれナイトマーケット"
+      />
+      <div class="hero__shade"></div>
+    </header>
+
+    <main>
+      <section class="page-title" aria-label="アンケート概要">
+        <p>SETOURA TASOGARE NIGHT MARKET</p>
+        <h1>参加者アンケート</h1>
+        <span>
+          本日はご参加いただきありがとうございます。今後のイベントづくりと事業報告の参考にさせてください。
+        </span>
+      </section>
+
+      <section class="intro" aria-label="回答前の案内">
+        <div>
+          <h2>回答の目安は3〜5分です</h2>
+          <p>
+            回答内容は、イベント改善および補助金事業の報告目的で使用します。個人が特定される形で公開することはありません。
+          </p>
+        </div>
+      </section>
+
+      <form id="surveyForm" class="survey" novalidate>
+        <section class="section">
+          <div class="section__head">
+            <span>01</span>
+            <h2>基本情報</h2>
+          </div>
+
+          <div class="field-grid">
+            <label class="field">
+              <span>年齢 <b>必須</b></span>
+              <select name="age" required>
+                <option value="">選択してください</option>
+                <option>10代以下</option>
+                <option>20代</option>
+                <option>30代</option>
+                <option>40代</option>
+                <option>50代</option>
+                <option>60代以上</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>性別 <b>必須</b></span>
+              <select name="gender" required>
+                <option value="">選択してください</option>
+                <option>男性</option>
+                <option>女性</option>
+                <option>回答しない</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>お住まい <b>必須</b></span>
+              <select name="area" required>
+                <option value="">選択してください</option>
+                <option>瀬戸浦</option>
+                <option>芦辺町</option>
+                <option>郷ノ浦</option>
+                <option>石田</option>
+                <option>勝本</option>
+                <option>壱岐市外</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>婚姻状況 <b>必須</b></span>
+              <select id="maritalStatus" name="maritalStatus" required>
+                <option value="">選択してください</option>
+                <option value="unmarried">未婚</option>
+                <option value="married">既婚</option>
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section__head">
+            <span>02</span>
+            <h2>参加状況</h2>
+          </div>
+
+          <div class="field-grid">
+            <label class="field">
+              <span>今回は誰と来ましたか？ <b>必須</b></span>
+              <select name="companion" required>
+                <option value="">選択してください</option>
+                <option>一人</option>
+                <option>夫婦・パートナー</option>
+                <option>家族</option>
+                <option>友人</option>
+                <option>職場関係</option>
+                <option>その他</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>このイベントを何で知りましたか？ <b>必須</b></span>
+              <select name="referrer" required>
+                <option value="">選択してください</option>
+                <option>Instagram</option>
+                <option>チラシ</option>
+                <option>ポスター</option>
+                <option>口コミ</option>
+                <option>出店者の紹介</option>
+                <option>その他</option>
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section__head">
+            <span>03</span>
+            <h2>イベント満足度</h2>
+          </div>
+
+          <div class="field-grid">
+            <label class="field">
+              <span>イベント全体の満足度を教えてください <b>必須</b></span>
+              <select name="overallSatisfaction" required>
+                <option value="">選択してください</option>
+                <option>非常に満足</option>
+                <option>満足</option>
+                <option>普通</option>
+                <option>不満</option>
+                <option>非常に不満</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>また参加したいですか？ <b>必須</b></span>
+              <select name="joinAgain" required>
+                <option value="">選択してください</option>
+                <option>ぜひ参加したい</option>
+                <option>参加したい</option>
+                <option>どちらでもない</option>
+                <option>あまり参加したくない</option>
+              </select>
+            </label>
+          </div>
+
+          <fieldset class="field field--full checkbox-group">
+            <legend>特に良かったものを選んでください <b>複数回答可</b></legend>
+            <div class="checks">
+              <label><input type="checkbox" name="goodPoints" value="フード" />フード</label>
+              <label><input type="checkbox" name="goodPoints" value="ドリンク" />ドリンク</label>
+              <label><input type="checkbox" name="goodPoints" value="音楽" />音楽</label>
+              <label><input type="checkbox" name="goodPoints" value="ダンス" />ダンス</label>
+              <label><input type="checkbox" name="goodPoints" value="雰囲気" />雰囲気</label>
+              <label><input type="checkbox" name="goodPoints" value="会場" />会場</label>
+              <label><input type="checkbox" name="goodPoints" value="人との交流" />人との交流</label>
+            </div>
+          </fieldset>
+        </section>
+
+        <section class="section">
+          <div class="section__head">
+            <span>04</span>
+            <h2>前向きな気持ち</h2>
+          </div>
+
+          <label class="field">
+            <span>このイベントに参加して前向きな気持ちになりましたか？ <b>必須</b></span>
+            <select name="positiveFeeling" required>
+              <option value="">選択してください</option>
+              <option>とてもそう思う</option>
+              <option>そう思う</option>
+              <option>どちらとも言えない</option>
+              <option>あまりそう思わない</option>
+              <option>全くそう思わない</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>前向きになった理由を教えてください</span>
+            <textarea name="positiveReason" rows="4" placeholder="自由にお書きください"></textarea>
+          </label>
+        </section>
+
+        <section class="section">
+          <div class="section__head">
+            <span>05</span>
+            <h2>交流・出会い</h2>
+          </div>
+
+          <div class="field-grid">
+            <label class="field">
+              <span>今回、新しい人との出会いや交流はありましたか？ <b>必須</b></span>
+              <select name="newConnection" required>
+                <option value="">選択してください</option>
+                <option>あった</option>
+                <option>少しあった</option>
+                <option>なかった</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>新しい人との交流を通じて地域への関心は高まりましたか？ <b>必須</b></span>
+              <select name="localInterestByConnection" required>
+                <option value="">選択してください</option>
+                <option>とても高まった</option>
+                <option>高まった</option>
+                <option>変わらない</option>
+                <option>下がった</option>
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section__head">
+            <span>06</span>
+            <h2>瀬戸浦・壱岐への興味</h2>
+          </div>
+
+          <div class="field-grid">
+            <label class="field">
+              <span>瀬戸浦という地域に興味を持ちましたか？ <b>必須</b></span>
+              <select name="setouraInterest" required>
+                <option value="">選択してください</option>
+                <option>とても持った</option>
+                <option>持った</option>
+                <option>変わらない</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>今後も瀬戸浦のイベントに参加したいですか？ <b>必須</b></span>
+              <select name="setouraJoinAgain" required>
+                <option value="">選択してください</option>
+                <option>ぜひ参加したい</option>
+                <option>参加したい</option>
+                <option>わからない</option>
+                <option>参加しない</option>
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section__head">
+            <span>07</span>
+            <h2>自由記述</h2>
+          </div>
+
+          <label class="field">
+            <span>イベントの感想を自由にお書きください</span>
+            <textarea name="eventComment" rows="5" placeholder="印象に残ったこと、良かったことなど"></textarea>
+          </label>
+
+          <label class="field">
+            <span>今後やってほしい企画があれば教えてください</span>
+            <textarea name="futureIdeas" rows="5" placeholder="次回見たい企画、改善してほしい点など"></textarea>
+          </label>
+        </section>
+
+        <section class="section subsidy-section" aria-live="polite">
+          <div class="section__head">
+            <span>08</span>
+            <h2>補助金事業に関する設問</h2>
+          </div>
+          <p class="section__note">
+            この項目は、基本情報の「婚姻状況」に応じて表示内容が切り替わります。
+          </p>
+
+          <div id="subsidyEmpty" class="empty-state">
+            先に「婚姻状況」を選択してください。
+          </div>
+
+          <div id="marriedQuestions" class="branch" hidden>
+            <label class="field">
+              <span>今回のイベントのような「人と人がつながる機会」を応援する取り組みについて、どのように感じましたか？ <b>必須</b></span>
+              <select name="marriedSupportFeeling" data-branch-required>
+                <option value="">選択してください</option>
+                <option>とても良い取り組みだと思う</option>
+                <option>良い取り組みだと思う</option>
+                <option>どちらともいえない</option>
+                <option>あまりそう思わない</option>
+                <option>そう思わない</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>今回のイベントは、人とのつながりや交流のきっかけづくりとして役立つと感じましたか？ <b>必須</b></span>
+              <select name="marriedConnectionSupport" data-branch-required>
+                <option value="">選択してください</option>
+                <option>とても感じた</option>
+                <option>少し感じた</option>
+                <option>どちらともいえない</option>
+                <option>あまり感じなかった</option>
+                <option>まったく感じなかった</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>今回のイベントを通じて、結婚や子育て、家族との暮らしについて前向きな気持ちになりましたか？ <b>必須</b></span>
+              <select name="marriedFamilyPositive" data-branch-required>
+                <option value="">選択してください</option>
+                <option>とても前向きになった</option>
+                <option>少し前向きになった</option>
+                <option>変わらない</option>
+                <option>あまり前向きになれなかった</option>
+                <option>まったく前向きになれなかった</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>本日のイベント全体の満足度を教えてください。 <b>必須</b></span>
+              <select name="marriedSubsidySatisfaction" data-branch-required>
+                <option value="">選択してください</option>
+                <option>大変満足</option>
+                <option>満足</option>
+                <option>どちらともいえない</option>
+                <option>不満</option>
+                <option>大変不満</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>今後のイベント企画や、壱岐での暮らし・子育て環境について感じることがあればご自由にお聞かせください。</span>
+              <textarea name="marriedSubsidyComment" rows="5" placeholder="自由にお書きください"></textarea>
+            </label>
+          </div>
+
+          <div id="unmarriedQuestions" class="branch" hidden>
+            <label class="field">
+              <span>今回のイベントのような「人と人がつながる機会」を応援する取り組みについて、どのように感じましたか？ <b>必須</b></span>
+              <select name="unmarriedSupportFeeling" data-branch-required>
+                <option value="">選択してください</option>
+                <option>とても良い取り組みだと思う</option>
+                <option>良い取り組みだと思う</option>
+                <option>どちらともいえない</option>
+                <option>あまりそう思わない</option>
+                <option>そう思わない</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>今回のイベントは、新しい出会いや交流のきっかけづくりとして役立つと感じましたか？ <b>必須</b></span>
+              <select name="unmarriedConnectionSupport" data-branch-required>
+                <option value="">選択してください</option>
+                <option>とても感じた</option>
+                <option>少し感じた</option>
+                <option>どちらともいえない</option>
+                <option>あまり感じなかった</option>
+                <option>まったく感じなかった</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>今回のイベントを通じて、将来の結婚や子育てについて少しでも前向きなイメージを持つことができましたか？ <b>必須</b></span>
+              <select name="unmarriedMarriagePositive" data-branch-required>
+                <option value="">選択してください</option>
+                <option>とても前向きになった</option>
+                <option>少し前向きになった</option>
+                <option>変わらない</option>
+                <option>あまり前向きになれなかった</option>
+                <option>まったく前向きになれなかった</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>本日のイベント全体の満足度を教えてください。 <b>必須</b></span>
+              <select name="unmarriedSubsidySatisfaction" data-branch-required>
+                <option value="">選択してください</option>
+                <option>大変満足</option>
+                <option>満足</option>
+                <option>どちらともいえない</option>
+                <option>不満</option>
+                <option>大変不満</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>今後のイベント企画や、壱岐での出会い・結婚・子育て支援について感じることがあればご自由にお聞かせください。</span>
+              <textarea name="unmarriedSubsidyComment" rows="5" placeholder="自由にお書きください"></textarea>
+            </label>
+          </div>
+        </section>
+
+        <section class="submit-area">
+          <p>
+            入力内容を確認して送信してください。送信後、回答内容はイベント改善と事業報告の参考にします。
+          </p>
+          <button type="submit">回答を送信する</button>
+          <output id="formMessage" role="status"></output>
+        </section>
+      </form>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,4 @@
+node_modules
+outputs
+*.inspect.ndjson
+.DS_Store
