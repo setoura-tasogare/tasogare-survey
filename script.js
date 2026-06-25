@@ -141,3 +141,193 @@ form.addEventListener("submit", async (event) => {
 });
 
 updateBranch();
+
+const reviewParams = new URLSearchParams(window.location.search);
+const reviewMode = reviewParams.get("review") === "1";
+
+if (reviewMode) {
+  initReviewMode();
+}
+
+function initReviewMode() {
+  const storageKey = "tasogare-review-notes";
+  const layer = document.createElement("div");
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  const toolbar = document.createElement("div");
+  let notes = readNotes();
+  let adding = false;
+  let dragging = null;
+
+  layer.className = "review-layer";
+  svg.classList.add("review-svg");
+  toolbar.className = "review-toolbar";
+  toolbar.innerHTML = `
+    <div>
+      <strong>修正メモモード</strong>
+      <span>「メモ追加」→修正したい場所をクリック。メモの上部をドラッグで移動できます。</span>
+    </div>
+    <button type="button" data-review-add>メモ追加</button>
+    <button type="button" data-review-clear>全削除</button>
+  `;
+
+  layer.appendChild(svg);
+  document.body.append(layer, toolbar);
+  sizeLayer();
+  renderNotes();
+
+  toolbar.querySelector("[data-review-add]").addEventListener("click", () => {
+    adding = true;
+    document.body.classList.add("is-adding-review");
+  });
+
+  toolbar.querySelector("[data-review-clear]").addEventListener("click", () => {
+    notes = [];
+    saveNotes();
+    renderNotes();
+  });
+
+  document.addEventListener(
+    "click",
+    (event) => {
+      if (!adding || event.target.closest(".review-toolbar, .review-note")) {
+        return;
+      }
+
+      event.preventDefault();
+      event.stopPropagation();
+
+      const x = event.pageX;
+      const y = event.pageY;
+      const noteWidth = Math.min(260, window.innerWidth - 24);
+      const preferredX = window.innerWidth < 560 ? x - noteWidth / 2 : x + 36;
+      const minX = window.scrollX + 12;
+      const maxX = window.scrollX + window.innerWidth - noteWidth - 12;
+      const noteX = Math.min(Math.max(preferredX, minX), maxX);
+      const noteY = y + 42;
+
+      notes.push({
+        id: crypto.randomUUID(),
+        x,
+        y,
+        noteX: Math.max(12, noteX),
+        noteY: Math.max(window.scrollY + 12, noteY),
+        text: "",
+      });
+
+      adding = false;
+      document.body.classList.remove("is-adding-review");
+      saveNotes();
+      renderNotes();
+    },
+    true,
+  );
+
+  document.addEventListener("pointermove", (event) => {
+    if (!dragging) {
+      return;
+    }
+
+    const note = notes.find((item) => item.id === dragging.id);
+    if (!note) {
+      return;
+    }
+
+    note.noteX = Math.max(8, event.pageX - dragging.offsetX);
+    note.noteY = Math.max(8, event.pageY - dragging.offsetY);
+    saveNotes();
+    renderNotes();
+  });
+
+  document.addEventListener("pointerup", () => {
+    dragging = null;
+  });
+
+  window.addEventListener("resize", () => {
+    sizeLayer();
+    renderLines();
+  });
+
+  function readNotes() {
+    try {
+      return JSON.parse(localStorage.getItem(storageKey) || "[]");
+    } catch {
+      return [];
+    }
+  }
+
+  function saveNotes() {
+    localStorage.setItem(storageKey, JSON.stringify(notes));
+  }
+
+  function sizeLayer() {
+    const width = Math.max(document.documentElement.scrollWidth, window.innerWidth);
+    const height = Math.max(document.documentElement.scrollHeight, window.innerHeight);
+    layer.style.width = `${width}px`;
+    layer.style.height = `${height}px`;
+    svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+  }
+
+  function renderNotes() {
+    sizeLayer();
+    layer.querySelectorAll(".review-note").forEach((note) => note.remove());
+
+    notes.forEach((note, index) => {
+      const noteEl = document.createElement("article");
+      noteEl.className = "review-note";
+      noteEl.style.left = `${note.noteX}px`;
+      noteEl.style.top = `${note.noteY}px`;
+      noteEl.innerHTML = `
+        <div class="review-note__head">
+          <span>修正メモ ${index + 1}</span>
+          <button type="button">削除</button>
+        </div>
+        <textarea placeholder="ここに修正内容を書く">${note.text}</textarea>
+      `;
+
+      noteEl.querySelector("textarea").addEventListener("input", (event) => {
+        note.text = event.target.value;
+        saveNotes();
+      });
+
+      noteEl.querySelector("button").addEventListener("click", () => {
+        notes = notes.filter((item) => item.id !== note.id);
+        saveNotes();
+        renderNotes();
+      });
+
+      noteEl.querySelector(".review-note__head").addEventListener("pointerdown", (event) => {
+        dragging = {
+          id: note.id,
+          offsetX: event.pageX - note.noteX,
+          offsetY: event.pageY - note.noteY,
+        };
+      });
+
+      layer.appendChild(noteEl);
+    });
+
+    renderLines();
+  }
+
+  function renderLines() {
+    svg.replaceChildren();
+
+    notes.forEach((note) => {
+      const startX = note.noteX + 130;
+      const startY = note.noteY + 2;
+      const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      const target = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+
+      line.setAttribute("x1", startX);
+      line.setAttribute("y1", startY);
+      line.setAttribute("x2", note.x);
+      line.setAttribute("y2", note.y);
+
+      target.setAttribute("cx", note.x);
+      target.setAttribute("cy", note.y);
+      target.setAttribute("r", "7");
+
+      svg.append(line, target);
+    });
+  }
+}
