@@ -515,10 +515,10 @@ button[type="submit"]:disabled {
   }
 
   .hero__image {
-    width: calc(100% + 4px);
+    width: calc(100% + 10px);
     object-fit: cover;
     object-position: 46% center;
-    transform: translateX(-2px);
+    transform: translateX(-5px);
   }
 
   main {
