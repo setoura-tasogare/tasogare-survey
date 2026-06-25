@@ -20,6 +20,7 @@ const FIELD_ORDER = [
   "setouraJoinAgain",
   "eventComment",
   "futureIdeas",
+  "subsidyUseFeeling",
   "marriedSupportFeeling",
   "marriedConnectionSupport",
   "marriedFamilyPositive",
