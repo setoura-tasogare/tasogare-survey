@@ -13,9 +13,12 @@ function updateBranch() {
 
   branches.forEach((branch) => {
     branch.hidden = true;
+    branch.setAttribute("aria-hidden", "true");
+    branch.querySelectorAll("input, select, textarea").forEach((field) => {
+      field.disabled = true;
+    });
     branch.querySelectorAll("[data-branch-required]").forEach((field) => {
       field.required = false;
-      field.disabled = true;
     });
   });
 
@@ -33,9 +36,12 @@ function updateBranch() {
   }
 
   activeBranch.hidden = false;
+  activeBranch.setAttribute("aria-hidden", "false");
+  activeBranch.querySelectorAll("input, select, textarea").forEach((field) => {
+    field.disabled = false;
+  });
   activeBranch.querySelectorAll("[data-branch-required]").forEach((field) => {
     field.required = true;
-    field.disabled = false;
   });
 }
 

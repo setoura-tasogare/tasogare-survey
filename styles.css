@@ -281,6 +281,10 @@ textarea:focus {
   gap: 18px;
 }
 
+.branch[hidden] {
+  display: none;
+}
+
 .empty-state {
   border: 1px dashed #cdbbae;
   color: var(--muted);
@@ -335,12 +339,12 @@ button[type="submit"]:disabled {
 
 @media (max-width: 780px) {
   .hero {
-    min-height: 310px;
-    align-items: end;
+    min-height: clamp(360px, 52svh, 460px);
+    align-items: center;
   }
 
   .hero__image {
-    object-fit: contain;
+    object-fit: cover;
     object-position: center;
   }
 
@@ -359,7 +363,7 @@ button[type="submit"]:disabled {
 
 @media (max-width: 430px) {
   .hero {
-    min-height: 270px;
+    min-height: clamp(340px, 52svh, 440px);
   }
 
   .page-title p {
