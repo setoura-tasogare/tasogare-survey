@@ -5,9 +5,11 @@
   --paper: #fff8ef;
   --surface: #ffffff;
   --line: #eaded0;
-  --blue: #2f6e86;
-  --orange: #e47852;
-  --yellow: #e9bd66;
+  --blue: #2f6878;
+  --orange: #d77961;
+  --yellow: #e3bf78;
+  --required: #9f5c50;
+  --required-bg: #f8ebe5;
   --green: #4c8275;
   --peach: #f6dfcf;
   --sky: #dcecf0;
@@ -28,8 +30,8 @@ body {
   margin: 0;
   color: var(--ink);
   background:
-    linear-gradient(180deg, rgba(251, 239, 226, 0.72) 0%, rgba(255, 248, 239, 1) 34%, rgba(247, 252, 251, 1) 100%),
-    linear-gradient(105deg, rgba(228, 120, 82, 0.08), rgba(220, 236, 240, 0.18) 44%, rgba(233, 189, 102, 0.1)),
+    linear-gradient(180deg, rgba(247, 241, 233, 0.64) 0%, rgba(255, 250, 243, 1) 34%, rgba(246, 252, 251, 1) 100%),
+    linear-gradient(105deg, rgba(220, 236, 240, 0.24), rgba(255, 248, 239, 0.12) 44%, rgba(233, 189, 102, 0.06)),
     var(--paper);
   font-family:
     system-ui,
@@ -124,7 +126,7 @@ main {
 
 .intro {
   margin: 0 0 24px;
-  border-left: 4px solid var(--orange);
+  border-left: 4px solid rgba(47, 104, 120, 0.62);
   padding: 22px 24px;
   background: rgba(255, 255, 255, 0.68);
   box-shadow: var(--shadow);
@@ -166,7 +168,7 @@ main {
   position: absolute;
   inset: 0 0 auto;
   height: 4px;
-  background: linear-gradient(90deg, rgba(228, 120, 82, 0.72), rgba(233, 189, 102, 0.48), rgba(47, 110, 134, 0.42));
+  background: linear-gradient(90deg, rgba(47, 104, 120, 0.5), rgba(227, 191, 120, 0.34), rgba(215, 121, 97, 0.26));
 }
 
 .section__head {
@@ -185,7 +187,7 @@ main {
   right: 0;
   bottom: 0;
   height: 1px;
-  background: linear-gradient(90deg, rgba(228, 120, 82, 0.34), rgba(233, 189, 102, 0.22), rgba(220, 236, 240, 0));
+  background: linear-gradient(90deg, rgba(47, 104, 120, 0.28), rgba(227, 191, 120, 0.18), rgba(220, 236, 240, 0));
 }
 
 .section__head span {
@@ -193,7 +195,7 @@ main {
   display: inline-block;
   min-width: 34px;
   padding-top: 3px;
-  color: var(--orange);
+  color: var(--blue);
   font-size: 0.86rem;
   font-weight: 900;
   line-height: 1;
@@ -205,7 +207,7 @@ main {
   width: 28px;
   height: 2px;
   margin-top: 8px;
-  background: linear-gradient(90deg, var(--orange), rgba(233, 189, 102, 0.42));
+  background: linear-gradient(90deg, rgba(47, 104, 120, 0.82), rgba(227, 191, 120, 0.42));
 }
 
 .section__head h2 {
@@ -245,9 +247,19 @@ main {
 
 .field b,
 .checkbox-group b {
-  color: var(--orange);
-  font-size: 0.78rem;
+  display: inline-flex;
+  align-items: center;
+  min-height: 20px;
+  padding: 1px 7px;
+  border: 1px solid rgba(159, 92, 80, 0.16);
+  border-radius: 999px;
+  color: var(--required);
+  background: var(--required-bg);
+  font-size: 0.72rem;
+  font-weight: 900;
+  line-height: 1.2;
   margin-left: 4px;
+  vertical-align: 1px;
 }
 
 select,
@@ -306,7 +318,7 @@ textarea:focus {
 .checks input {
   width: 18px;
   height: 18px;
-  accent-color: var(--orange);
+  accent-color: var(--blue);
   flex: 0 0 auto;
 }
 
@@ -324,7 +336,7 @@ textarea:focus {
   color: var(--muted);
   padding: 18px;
   border-radius: 8px;
-  background: rgba(255, 248, 239, 0.82);
+  background: rgba(248, 251, 250, 0.82);
 }
 
 .submit-area {
