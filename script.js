@@ -17,9 +17,6 @@ function updateBranch() {
     branch.querySelectorAll("input, select, textarea").forEach((field) => {
       field.disabled = true;
     });
-    branch.querySelectorAll("[data-branch-required]").forEach((field) => {
-      field.required = false;
-    });
   });
 
   const activeBranch =
@@ -39,9 +36,6 @@ function updateBranch() {
   activeBranch.setAttribute("aria-hidden", "false");
   activeBranch.querySelectorAll("input, select, textarea").forEach((field) => {
     field.disabled = false;
-  });
-  activeBranch.querySelectorAll("[data-branch-required]").forEach((field) => {
-    field.required = true;
   });
 }
 
